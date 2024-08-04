@@ -41,7 +41,7 @@ Welcome to the Football Shoes Shop project! This application is designed to offe
 - MySQL
 - Hibernate
 - Git
-- JSP
+- Postman
 
 ### Installation
 
