@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.card-container {
+    background: #fff;
+    display: flex;
+    height: 100vh;
+}
+
+.image-container, .row {
+    overflow-x: auto;
+    max-height: 100%;
+}
+
+.image-container {
+    width: 50%;
+    background-color: #06aa5e;
+    color: white;
+    text-align: center;
+}
+
+.row {
+    flex: 1;
+    background: #1e2b3b;
+    color: #fff;
+}
+
+.company {
+    font-size: 24px;
+    margin: 50px 0 0 30px;
+}
+
+.illustration {
+    max-width: 70%;
+    height: auto;
+    object-fit: cover;
+}
+
+.quote {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.mobile-btm-nav img {
+    width: 20px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    flex: 1;
+    gap: 20px;
+    padding: 30px 50px;
+}
+
+.form-header {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    opacity: 0.6;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #06aa5e;
+    border-radius: 5px;
+    background: #1e2b3b;
+    color: #fff;
+}
+
+.form-control.is-invalid {
+    border-color: red;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-control.is-invalid + .invalid-feedback {
+    display: block;
+}
+
+.hidepassword {
+    position: relative;
+}
+
+.hidepassword img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-success {
+    background-color: #06aa5e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    outline: none;
+}
+
+.btn-success:hover {
+    background-color: #05a358;
+}
+
+.slideUp-animation {
+    animation: slideUp 0.5s ease-out;
+}
+
+.slideRight-animation {
+    animation: slideRight 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
