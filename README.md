@@ -36,7 +36,7 @@ Welcome to the Football Shoes Shop project! This application is designed to offe
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 11 or higher
+- Java Development Kit (JDK) 17
 - Maven
 - MySQL
 - Hibernate
