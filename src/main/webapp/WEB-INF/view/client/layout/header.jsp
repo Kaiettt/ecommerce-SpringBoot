@@ -2,80 +2,112 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>'
         <header class="header" data-header>
             <div class="container">
+                <div class="content">
+                    <article class="home_icon">
+                        <a href="./" class="navbar__icon menu-icon">
+                            <img src="/images/header/icon.png" alt="" class="home-img">
+                        </a>
+                        <span>
+                            <a href="./" class="navbar-link">
+                                KAISHOP
+                            </a>
+                        </span>
+                    </article>
 
-                <div class="overlay" data-overlay></div>
-                <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </button>
+                    <nav class="navbar" data-navbar>
 
-                <nav class="navbar" data-navbar>
+                        <ul class="navbar-list">
 
-                    <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </button>
+                            <li class="navbar-item navbar-item__hover">
+                                <a href="#" class="navbar-link">Home</a>
+                                <!-- <ul class="dropdown-item">
+                                <li class="item">
+                                    <a href="#">
+                                        item1
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#">
+                                        item2
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#">
+                                        item3
+                                    </a>
+                                </li>
+                            </ul> -->
+                            </li>
 
-                    <ul class="navbar-list">
+                            <li class="navbar-item">
+                                <a href="#" class="navbar-link">About</a>
+                            </li>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">Home</a>
-                        </li>
+                            <li class="navbar-item">
+                                <a href="#" class="navbar-link">Products</a>
+                            </li>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">About</a>
-                        </li>
+                            <li class="navbar-item">
+                                <a href="#" class="navbar-link">Shop</a>
+                            </li>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">Products</a>
-                        </li>
+                            <li class="navbar-item">
+                                <a href="#" class="navbar-link">Blog</a>
+                            </li>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">Shop</a>
-                        </li>
+                            <li class="navbar-item">
+                                <a href="#" class="navbar-link">Contact</a>
+                            </li>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">Blog</a>
-                        </li>
+                        </ul>
+                    </nav>
 
-                        <li class="navbar-item">
-                            <a href="#" class="navbar-link">Contact</a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="nav-action-list">
-
-                        <li>
-                            <button class="nav-action-btn">
-                                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-
-                                <span class="nav-action-text">Search</span>
-                            </button>
-                        </li>
-
-                        <li>
+                    <div class="action-container">
+                        <ul class="nav-action-list">
+                            <!-- <li>
                             <a href="#" class="nav-action-btn">
-                                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
-                                <span class="nav-action-text">Login / Register</span>
+                               Sign In
                             </a>
                         </li>
-
-
-
+    
                         <li>
-                            <button class="nav-action-btn">
-                                <ion-icon name="bag-outline" aria-hidden="true"></ion-icon>
+                            <a href="#" class="nav-action-btn">
+                               Sign Up
+                            </a>
+                        </li> -->
 
-                                <data class="nav-action-text" value="318.00">Basket:
-                                    <strong>$318.00</strong></data>
-
-                                <data class="nav-action-badge" value="4" aria-hidden="true">4</data>
-                            </button>
-                        </li>
-
-                    </ul>
-
-                </nav>
-
+                            <li class="icon-action user-icon">
+                                <i class="fa-solid fa-user"></i>
+                                <ul class="dropdown-item">
+                                    <article class="dropdown-item__top">
+                                        <img class="img-user"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyKpQUy8JP90MAZxFjU0P9bPqkUWL35fd8Ag&s"
+                                            alt="">
+                                        <span>Name user</span>
+                                    </article>
+                                    <li class="item">
+                                        <a href="#">
+                                            Account
+                                        </a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#">
+                                            Order History
+                                        </a>
+                                    </li>
+                                    <li class="item">
+                                        <form method="post" action="/logout">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                            <button class="dropdown-item">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="icon-action cart-icon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </header>

@@ -17,7 +17,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private double sum;
+    private int sum;
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -34,11 +34,11 @@ public class Cart {
         this.id = id;
     }
 
-    public double getSum() {
+    public int getSum() {
         return sum;
     }
 
-    public void setSum(double sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 

@@ -14,7 +14,7 @@ public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private double quanity;
+    private int quantity;
     private double price;
     private double size;
 
@@ -34,12 +34,12 @@ public class CartDetail {
         this.id = id;
     }
 
-    public double getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(double quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getPrice() {
