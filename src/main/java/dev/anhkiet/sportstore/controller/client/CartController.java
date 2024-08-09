@@ -38,9 +38,13 @@ public class CartController {
     }
 
     @PostMapping("/delete-cart-product/{ID}")
-    public String DeleteProductFromCart(@PathVariable long ID) {
+    public String DeleteProductFromCart(@PathVariable long ID, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
         Optional<CartDetail> cartDetailOptional = cartService.getCartDetailByID(ID);
         if (cartDetailOptional.isPresent()) {
+            CartDetail cartDetail = cartDetailOptional.get();
+            int currentSum = (int) session.getAttribute("sum");
+            session.setAttribute("sum", currentSum - cartDetail.getQuantity());
             this.cartService.DeleteCartDetailByID(ID);
         }
         return "redirect:/cart";

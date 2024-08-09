@@ -79,11 +79,16 @@ public class HomePageController {
     public String getCartPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         String username = (String) session.getAttribute("email");
-        List<CartDetail> cartDetail = (this.cartService.getCartDetailByUser(username) != null)
+        List<CartDetail> cartDetails = (this.cartService.getCartDetailByUser(username) != null)
                 ? this.cartService.getCartDetailByUser(username)
                 : new ArrayList<CartDetail>();
-        model.addAttribute("cartDetails", cartDetail);
-        model.addAttribute("sizelist", cartDetail.size());
+        double totalPrice = 0;
+        for (CartDetail cartdetail : cartDetails) {
+            totalPrice += cartdetail.getPrice();
+        }
+        model.addAttribute("checkoutPrice", totalPrice);
+        model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("sizelist", cartDetails.size());
         return "client/cart/show";
     }
 }
