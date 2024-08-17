@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dev.anhkiet.sportstore.domain.Cart;
 import dev.anhkiet.sportstore.domain.CartDetail;
+import dev.anhkiet.sportstore.domain.Order;
 import dev.anhkiet.sportstore.domain.Product;
 import dev.anhkiet.sportstore.domain.User;
 import dev.anhkiet.sportstore.domain.dto.RegisterDTO;
@@ -86,9 +88,15 @@ public class HomePageController {
         for (CartDetail cartdetail : cartDetails) {
             totalPrice += cartdetail.getPrice();
         }
-        model.addAttribute("checkoutPrice", totalPrice);
+        User user = this.userService.getUserByEmail(username);
+        Cart cart = this.cartService.getCartByUser(user) == null ? new Cart() : this.cartService.getCartByUser(user);
+
+        model.addAttribute("cart", cart);
         model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("checkoutPrice", totalPrice);
         model.addAttribute("sizelist", cartDetails.size());
+
         return "client/cart/show";
     }
+
 }

@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import dev.anhkiet.sportstore.domain.Cart;
 import dev.anhkiet.sportstore.domain.User;
+import dev.anhkiet.sportstore.service.CartService;
 import dev.anhkiet.sportstore.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +27,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserController {
     private UserService userService;
     private PasswordEncoder passwordEncoder;
+    private CartService cartService;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder, CartService cartService) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
+        this.cartService = cartService;
     }
 
     @GetMapping("/admin")
@@ -104,8 +110,16 @@ public class UserController {
     }
 
     @PostMapping(value = "/admin/user/delete")
-    public String postDeleteUser(@ModelAttribute("user") User user) {
-        this.userService.DeleteUserByID(user.getId());
+    public String postDeleteUser(@ModelAttribute("user") User user, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Optional<User> UserOptional = this.userService.getUserByID(user.getId());
+        if (UserOptional.isPresent()) {
+            User newUser = UserOptional.get();
+            this.cartService.deleteCartByUser(newUser);
+            session.setAttribute("sum", 0);
+            this.userService.DeleteUserByID(user.getId());
+        }
+
         return "redirect:/user";
     }
 

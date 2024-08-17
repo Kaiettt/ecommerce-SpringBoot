@@ -17,6 +17,7 @@ public class CartDetail {
     private int quantity;
     private double price;
     private double size;
+    private boolean markBuy;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
@@ -72,6 +73,14 @@ public class CartDetail {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public boolean isMarkBuy() {
+        return markBuy;
+    }
+
+    public void setMarkBuy(boolean markBuy) {
+        this.markBuy = markBuy;
     }
 
 }

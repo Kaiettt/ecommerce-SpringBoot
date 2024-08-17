@@ -1,5 +1,7 @@
 package dev.anhkiet.sportstore.domain;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -19,10 +21,11 @@ public class Order {
     private long id;
     private double price;
     private double quantity;
-    private String receiver_name;
-    private String receiver_phone;
-    private String receiver_address;
-
+    private String receiverName;
+    private String receiverPhone;
+    private String receiverAddress;
+    private LocalDateTime orderTime;
+    private String OrderTimeFormated;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -54,28 +57,28 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public String getReceiver_name() {
-        return receiver_name;
+    public String getReceiverName() {
+        return receiverName;
     }
 
-    public void setReceiver_name(String receiver_name) {
-        this.receiver_name = receiver_name;
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
     }
 
-    public String getReceiver_phone() {
-        return receiver_phone;
+    public String getReceiverPhone() {
+        return receiverPhone;
     }
 
-    public void setReceiver_phone(String receiver_phone) {
-        this.receiver_phone = receiver_phone;
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
     }
 
-    public String getReceiver_address() {
-        return receiver_address;
+    public String getReceiverAddress() {
+        return receiverAddress;
     }
 
-    public void setReceiver_address(String receiver_address) {
-        this.receiver_address = receiver_address;
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
     }
 
     public User getUser() {
@@ -92,6 +95,22 @@ public class Order {
 
     public void setOrderDetail(List<OrderDetail> orderDetail) {
         this.orderDetail = orderDetail;
+    }
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(LocalDateTime orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public String getOrderTimeFormated() {
+        return OrderTimeFormated;
+    }
+
+    public void setOrderTimeFormated(String orderTimeFormated) {
+        OrderTimeFormated = orderTimeFormated;
     }
 
 }

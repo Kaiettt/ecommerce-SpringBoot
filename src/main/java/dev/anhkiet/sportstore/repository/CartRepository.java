@@ -9,4 +9,6 @@ import dev.anhkiet.sportstore.domain.User;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Long> {
     Cart findByUser(User user);
+
+    void deleteByUser(User user);
 }
