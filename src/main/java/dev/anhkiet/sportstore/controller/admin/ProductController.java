@@ -3,6 +3,7 @@ package dev.anhkiet.sportstore.controller.admin;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,6 +76,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/{ID}")
+
     public String getUserDetailPage(Model model, @PathVariable long ID) {
         Optional<Product> optionalProduct = this.productService.getProductByID(ID);
         if (optionalProduct.isPresent()) {

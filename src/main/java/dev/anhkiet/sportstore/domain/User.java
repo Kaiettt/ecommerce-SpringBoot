@@ -42,22 +42,6 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
-    public String getPassWord() {
-        return passWord;
-    }
-
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
     // roleId
     // User many -> to one -> role
     @ManyToOne
@@ -144,4 +128,19 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 }

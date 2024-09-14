@@ -264,7 +264,7 @@ body {
 
 .image-contain {
   width: 100%;
-  height: 100%;
+  height: 80%;
   object-fit: contain;
   object-position: center;
   transition: var(--transition-2);
@@ -628,6 +628,7 @@ body {
 
 .filter-list {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;

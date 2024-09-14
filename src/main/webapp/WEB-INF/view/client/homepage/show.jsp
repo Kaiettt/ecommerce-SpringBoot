@@ -13,9 +13,10 @@
                 <link rel="stylesheet" href="/client/css/style.css">
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                    integrity="sha384-M4cOlXWnx94xVV95HvTAX3LJm3tjX8k7vnb5H0iOjKk0f6DqqRYff9Z2qTmJxPcg"
-                    crossorigin="anonymous">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                <!-- Optional Bootstrap theme -->
+                <link rel="stylesheet"
+                    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css">
                 <!-- cnd icon  -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -205,6 +206,13 @@
                         border-radius: 50%;
                         object-fit: cover;
                     }
+
+                    .pagination .page-link {
+                        font-size: 1.5rem;
+                        /* Increase font size */
+                        padding: 1.5rem 1.5rem;
+                        /* Increase padding */
+                    }
                 </style>
             </head>
 
@@ -379,100 +387,197 @@
                         <jsp:include page="../layout/feature.jsp" />
                         <section class="section product">
                             <div class="container">
+                                <h2 class="h2 section-title">All Products</h2>
+                                <div class="row g-4 fruite">
+                                    <div class="col-12 col-md-4">
+                                        <div class="row g-4">
+                                            <div class="col-12" id="factoryFilter">
+                                                <div class="mb-3"><b>Brand</b></div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-1"
+                                                        value="Nike" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-1">Nike</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-2"
+                                                        value="Adidas" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-2">Adidas</label>
+                                                </div>
 
-                                <h2 class="h2 section-title">Bestsellers Products</h2>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-3"
+                                                        value="Puma" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-3">Puma</label>
+                                                </div>
 
-                                <ul class="filter-list">
-
-                                    <li>
-                                        <button class="filter-btn  active">All</button>
-                                    </li>
-
-                                    <li>
-                                        <button class="filter-btn">Nike</button>
-                                    </li>
-
-                                    <li>
-                                        <button class="filter-btn">Adidas</button>
-                                    </li>
-
-                                    <li>
-                                        <button class="filter-btn">Puma</button>
-                                    </li>
-
-                                    <li>
-                                        <button class="filter-btn">Bata</button>
-                                    </li>
-
-                                    <li>
-                                        <button class="filter-btn">Apex</button>
-                                    </li>
-
-                                </ul>
-
-                                <ul class="product-list">
-                                    <c:forEach items="${Products}" var="Product">
-                                        <li class="product-item">
-                                            <div class="product-card" tabindex="0">
-
-                                                <figure class="card-banner">
-                                                    <a href="/homepage/product/${Product.id}"> <img
-                                                            src="/images/product/${Product.image}" width=" 312"
-                                                            height="350" loading="lazy" alt="Running Sneaker Shoes"
-                                                            class="image-contain"></a>
-                                                    <div class="card-badge">New</div>
-
-                                                    <ul class="card-action-list">
-
-                                                        <li class="card-action-item">
-                                                            <form action="/add-product-to-cart/${Product.id}"
-                                                                method="post">
-                                                                <input type="hidden" name="${_csrf.parameterName}"
-                                                                    value="${_csrf.token}" />
-                                                                <button class="card-action-btn"
-                                                                    aria-labelledby="card-label-1">
-                                                                    <ion-icon name="cart-outline"></ion-icon>
-                                                                </button>
-                                                                <div class="card-action-tooltip" id="card-label-1">Add
-                                                                    to
-                                                                    Cart</div>
-                                                            </form>
-                                                        </li>
-                                                        <a href="/homepage/product/${Product.id}">
-                                                            <li class="card-action-item">
-                                                                <button class="card-action-btn"
-                                                                    aria-labelledby="card-label-3">
-                                                                    <ion-icon name="eye-outline"></ion-icon>
-                                                                </button>
-
-                                                                <div class="card-action-tooltip" id="card-label-3">Quick
-                                                                    View</div>
-                                                            </li>
-                                                        </a>
-
-                                                    </ul>
-                                                </figure>
-
-                                                <div class="card-content">
-
-                                                    <div class="card-cat">
-                                                        <a href="#" class="card-cat-link">${Product.brand}</a>
-
-                                                    </div>
-
-                                                    <h3 class="h3 card-title">
-                                                        <a href="#">${Product.name}</a>
-                                                    </h3>
-
-                                                    <data class="card-price" value="${Product.price}">${Product.price}
-                                                        $</data>
-
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-4"
+                                                        value="Mizuno" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-4">Mizuno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-5"
+                                                        value="New Balance" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-5">New Balance</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-6"
+                                                        value="ACER" name="brand-checkbox">
+                                                    <label class="form-check-label" for="factory-6">Reebok</label>
                                                 </div>
 
                                             </div>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
+                                            <div class="col-12" id="priceFilter">
+                                                <div class="mb-2 mt-2"><b>Mức giá</b></div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-2"
+                                                        value="Under-100$" name="price-checkbox">
+                                                    <label class="form-check-label" for="price-2">Under 100$</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-3"
+                                                        value="From-100$-to-200$" name="price-checkbox">
+                                                    <label class="form-check-label" for="price-3">From 100$ to
+                                                        200$</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-4"
+                                                        value="From-200$-to-300$" name="price-checkbox">
+                                                    <label class="form-check-label" for="price-4">From 200$ to
+                                                        300$</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2"><b>Sắp xếp</b></div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-1"
+                                                        value="gia-tang-dan" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-1">Giá tăng dần</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-2"
+                                                        value="gia-giam-dan" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-2">Giá giảm dần</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-3" checked
+                                                        value="gia-nothing" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-3">Không sắp xếp</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12">
+
+                                                <button
+                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4"
+                                                    id="btnFilter">
+                                                    Lọc Sản Phẩm
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="product-list col-12 col-md-8 text-center">
+                                        <c:forEach items="${Products}" var="Product">
+                                            <li class="product-item">
+                                                <div class="product-card" tabindex="0">
+
+                                                    <figure class="card-banner">
+                                                        <a href="/homepage/product/${Product.id}"> <img
+                                                                src="/images/product/${Product.image}" width=" 300"
+                                                                height="200" loading="lazy" alt="Running Sneaker Shoes"
+                                                                class="image-contain"></a>
+                                                        <div class="card-badge">New</div>
+
+                                                        <ul class="card-action-list">
+
+                                                            <li class="card-action-item">
+                                                                <form action="/add-product-to-cart/${Product.id}"
+                                                                    method="post">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <button class="card-action-btn"
+                                                                        aria-labelledby="card-label-1">
+                                                                        <ion-icon name="cart-outline"></ion-icon>
+                                                                    </button>
+                                                                    <div class="card-action-tooltip" id="card-label-1">
+                                                                        Add
+                                                                        to
+                                                                        Cart</div>
+                                                                </form>
+                                                            </li>
+                                                            <a href="/homepage/product/${Product.id}">
+                                                                <li class="card-action-item">
+                                                                    <button class="card-action-btn"
+                                                                        aria-labelledby="card-label-3">
+                                                                        <ion-icon name="eye-outline"></ion-icon>
+                                                                    </button>
+
+                                                                    <div class="card-action-tooltip" id="card-label-3">
+                                                                        Quick
+                                                                        View</div>
+                                                                </li>
+                                                            </a>
+
+                                                        </ul>
+                                                    </figure>
+
+                                                    <div class="card-content">
+
+                                                        <div class="card-cat">
+                                                            <a href="#" class="card-cat-link">${Product.brand}</a>
+
+                                                        </div>
+
+                                                        <h3 class="h3 card-title">
+                                                            <a href="#">${Product.name}</a>
+                                                        </h3>
+
+                                                        <data class="card-price"
+                                                            value="${Product.price}">${Product.price}
+                                                            $</data>
+
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+
+                                    <div style="margin-left: 700px; margin-top: 100px;">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <li class="page-item"><a
+                                                        class=" ${ 1 eq currentPage ? 'disabled page-link'  : ' page-link'}"
+                                                        href="/?page=${currentPage-1}${queryfilter}"
+                                                        aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a></li>
+                                                <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">
+                                                    <li class="page-item"><a
+                                                            class=" ${ (loop.index+1) eq currentPage ? 'active page-link'  : ' page-link'}"
+                                                            href="/?page=${loop.index+1}${queryfilter}">
+                                                            ${loop.index+1}
+                                                        </a></li>
+                                                </c:forEach>
+                                                <li class="page-item">
+                                                    <a class=" ${ totalPages eq currentPage ? 'disabled page-link'  : ' page-link'}"
+                                                        href="/?page=${currentPage+1}${queryfilter}" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
 
                             </div>
                         </section>
@@ -495,6 +600,61 @@
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
                     integrity="sha384-B4gt1jrGC7Jh4Ag4U1TjtT8XnLk3e9FhFMAJz5i29JJzMIeYIhNRBbl4fYunQZkP"
                     crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                <script>
+
+
+                    let brands = document.getElementsByName("brand-checkbox");
+                    let price = document.getElementsByName("price-checkbox");
+                    let button = document.getElementById("btnFilter");
+
+                    function getURL() {
+                        let brands_query = "";
+                        let price_query = "";
+                        let url = "http://localhost:8080/?page=1";
+                        for (let i = 0; i < brands.length; i++) {
+                            if (brands[i].checked) {
+                                if (i != brands.length - 1) {
+                                    brands_query += brands[i].value + ",";
+                                }
+                                else {
+                                    brands_query += brands[i].value;
+                                }
+                            }
+                        }
+                        for (let i = 0; i < price.length; i++) {
+                            if (price[i].checked) {
+                                if (i != price.length - 1) {
+                                    price_query += price[i].value + ",";
+                                }
+                                else {
+                                    price_query += price[i].value;
+                                }
+                            }
+                        }
+                        if (brands_query != "") {
+                            if (brands_query[brands_query.length - 1] == ',') {
+                                brands_query = brands_query.slice(0, -1); // Removes the last character
+                            }
+                            url += "&brand=";
+                            url += brands_query;
+                        }
+                        if (price_query != "") {
+                            if (price_query[price_query.length - 1] == ',') {
+                                price_query = price_query.slice(0, -1); // Removes the last character
+                            }
+                            url += "&price=";
+                            url += price_query;
+                        }
+                        window.location.href = url;
+                    }
+
+                    button.addEventListener('click', function () {
+                        getURL(); // Call the function on button click
+                    });
+                </script>
             </body>
 
             </html>

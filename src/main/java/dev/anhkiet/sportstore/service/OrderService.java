@@ -2,7 +2,6 @@ package dev.anhkiet.sportstore.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,12 +23,10 @@ public class OrderService {
     private CartService cartService;
     private OrderRepository orderRepository;
     private OrderDetailRepository orderDetailRepository;
-    private CartRepository cartRepository;
 
     public OrderService(CartRepository cartRepository, OrderDetailRepository orderDetailRepository,
             UserService userService, CartService cartService,
             OrderRepository orderRepository) {
-        this.cartRepository = cartRepository;
         this.userService = userService;
         this.cartService = cartService;
         this.orderRepository = orderRepository;
@@ -62,19 +59,15 @@ public class OrderService {
                 orderDetail.setOrder(order);
                 orderDetail.setProduct(cartDetail.getProduct());
                 orderDetail.setQuantity(cartDetail.getQuantity());
-                // OrderList.add(orderDetail);
                 try {
                     cartService.deleteCartDetailByID(cartDetail.getId());
                 } catch (EntityNotFoundException e) {
-                    // Handle the case where the entity is not found
-                    // Log or handle as needed
                 }
                 this.orderDetailRepository.save(orderDetail);
             }
         }
         cart.setSum(cart.getSum() - newSum);
         order.setQuantity(newSum);
-        // order.setOrderDetail(OrderList);
         order = this.orderRepository.save(order);
         if (cart.getSum() == 0) {
             this.cartService.deleteCartByID(cart.getId());
