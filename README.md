@@ -12,6 +12,7 @@ Welcome to the Football Shoes Shop project! This application is designed to offe
 - Product management (CRUD operations for football shoes)
 - Shopping cart functionality
 - Order management
+- Search and Filtering Products
 - Responsive design using Bootstrap
 
 ## Technologies Used
